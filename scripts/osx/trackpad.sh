@@ -17,3 +17,10 @@ defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1;ok
 #defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadRightClick -bool true
 #defaults -currentHost write NSGlobalDomain com.apple.trackpad.trackpadCornerClickBehavior -int 1
 #defaults -currentHost write NSGlobalDomain com.apple.trackpad.enableSecondaryClick -bool true;ok
+
+#running "Use scroll gesture with the Ctrl (^) modifier key to zoom"
+# defaults write com.apple.universalaccess closeViewScrollWheelToggle -bool true
+# defaults write com.apple.universalaccess HIDScrollZoomModifierMask -int 262144;ok
+
+#running "Follow the keyboard focus while zoomed in"
+# defaults write com.apple.universalaccess closeViewZoomFollowsFocus -bool true;ok

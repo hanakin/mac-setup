@@ -27,3 +27,6 @@ running "Makeing ⌘ + F focus the search input in iTunes"
 # open `Contents/Resources/your-language.lproj/Localizable.strings`, and look
 # for `kHiddenMenuItemTargetSearch`.
 defaults write com.apple.iTunes NSUserKeyEquivalents -dict-add "Target Search Field" "@F";ok
+
+# Stop iTunes from responding to the keyboard media keys
+#launchctl unload -w /System/Library/LaunchAgents/com.apple.rcd.plist 2> /dev/null

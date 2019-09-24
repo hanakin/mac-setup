@@ -39,8 +39,12 @@ defaults write com.apple.finder ShowPathbar -bool true;ok
 running "Allowing text selection in Quick Look"
 defaults write com.apple.finder QLEnableTextSelection -bool true;ok
 
+running "Keep folders on top when sorting by name"
+defaults write com.apple.finder _FXSortFoldersFirst -bool true;ok
+
 running "Displaying full POSIX path as Finder window title"
 defaults write com.apple.finder _FXShowPosixPathInTitle -bool true;ok
+
 
 running "Setting current folder to default search loaction"
 defaults write com.apple.finder FXDefaultSearchScope -string "SCcf";ok
@@ -55,7 +59,8 @@ running "Removing the spring loading delay for directories"
 defaults write NSGlobalDomain com.apple.springing.delay -float 0;ok
 
 running "Avoiding .DS_Store file creation on network volumes"
-defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true;ok
+defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
+defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true;ok
 
 running "Disabling disk image verification"
 defaults write com.apple.frameworks.diskimages skip-verify -bool true
@@ -103,11 +108,11 @@ defaults write com.apple.finder WarnOnEmptyTrash -bool false;ok
 running "Enabling AirDrop over Ethernet and on unsupported Macs running Lion"
 defaults write com.apple.NetworkBrowser BrowseAllInterfaces -bool true;ok
 
-# running "Enable the MacBook Air SuperDrive on any Mac"
-# sudo nvram boot-args="mbasd=1";ok
-
 running "Showing the ~/Library folder"
 chflags nohidden ~/Library;ok
+
+running "Show the /Volumes folder"
+sudo chflags nohidden /Volumes;ok
 
 # running "Remove Dropbox’s green checkmark icons in Finder"
 # file=/Applications/Dropbox.app/Contents/Resources/emblem-dropbox-uptodate.icns

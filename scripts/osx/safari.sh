@@ -52,3 +52,43 @@ defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebK
 
 running "Adding a context menu item for showing the Web Inspector in web views"
 defaults write NSGlobalDomain WebKitDeveloperExtras -bool true;ok
+
+running "Enable continuous spellchecking"
+defaults write com.apple.Safari WebContinuousSpellCheckingEnabled -bool true;ok
+
+running "Disable auto-correct"
+defaults write com.apple.Safari WebAutomaticSpellingCorrectionEnabled -bool false;ok
+
+#running "Disable AutoFill"
+# defaults write com.apple.Safari AutoFillFromAddressBook -bool false
+# defaults write com.apple.Safari AutoFillPasswords -bool false
+# defaults write com.apple.Safari AutoFillCreditCardData -bool false
+# defaults write com.apple.Safari AutoFillMiscellaneousForms -bool false;ok
+
+running "Warn about fraudulent websites"
+defaults write com.apple.Safari WarnAboutFraudulentWebsites -bool true;ok
+
+running "Disable plug-ins"
+defaults write com.apple.Safari WebKitPluginsEnabled -bool false
+defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2PluginsEnabled -bool false;ok
+
+# running "Disable Java"
+# defaults write com.apple.Safari WebKitJavaEnabled -bool false
+# defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2JavaEnabled -bool false
+# defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2JavaEnabledForLocalFiles -bool false;ok
+
+running "Block pop-up windows"
+defaults write com.apple.Safari WebKitJavaScriptCanOpenWindowsAutomatically -bool false
+defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2JavaScriptCanOpenWindowsAutomatically -bool false;ok
+
+running "Disable auto-playing video"
+defaults write com.apple.Safari WebKitMediaPlaybackAllowsInline -bool false
+defaults write com.apple.SafariTechnologyPreview WebKitMediaPlaybackAllowsInline -bool false
+defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2AllowsInlineMediaPlayback -bool false
+defaults write com.apple.SafariTechnologyPreview com.apple.Safari.ContentPageGroupIdentifier.WebKit2AllowsInlineMediaPlayback -bool false;ok
+
+running "Enable Do Not Track"
+defaults write com.apple.Safari SendDoNotTrackHTTPHeader -bool true;ok
+
+running "Update extensions automatically"
+defaults write com.apple.Safari InstallExtensionUpdatesAutomatically -bool true;ok

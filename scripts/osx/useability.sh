@@ -19,8 +19,8 @@ sudo pmset -a standbydelay 86400;ok
 # running "Disabling the sound effects on boot"
 # sudo nvram SystemAudioVolume=" ";ok
 
-running "Disabeling transparency in the menu bar and elsewhere"
-defaults write com.apple.universalaccess reduceTransparency -bool true;ok
+# running "Disabeling transparency in the menu bar and elsewhere"
+# defaults write com.apple.universalaccess reduceTransparency -bool true;ok
 
 running "Hideing the Time Machine, Volume, User, Airport icons in the menubar"
 for domain in ~/Library/Preferences/ByHost/com.apple.systemuiserver.*; do
@@ -36,8 +36,11 @@ defaults write com.apple.systemuiserver menuExtras -array \
     #"/System/Library/CoreServices/Menu Extras/Clock.menu"
 ok
 
-#running "Set highlight color to green"
-#defaults write NSGlobalDomain AppleHighlightColor -string "0.764700 0.976500 0.568600";ok
+running "Setting printer app to Automatically quit once the print jobs complete"
+defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true;ok
+
+running "Set highlight color to green"
+defaults write NSGlobalDomain AppleHighlightColor -string "0.764700 0.976500 0.568600";ok
 
 running "Setting sidebar icon size to medium"
 defaults write NSGlobalDomain NSTableViewDefaultSizeMode -int 2;ok
@@ -73,6 +76,9 @@ running "Displaying ASCII control characters using caret notation in standard te
 # Try e.g. `cd /tmp; unidecode "\x{0000}" > cc.txt; open -e cc.txt`
 defaults write NSGlobalDomain NSTextShowsControlCharacters -bool true;ok
 
+running "Disabling Resume system-wide"
+defaults write com.apple.systempreferences NSQuitAlwaysKeepsWindows -bool false;ok
+
 # running "Disabling automatic termination of inactive apps"
 # defaults write NSGlobalDomain NSDisableAutomaticTermination -bool true;ok
 #
@@ -82,23 +88,34 @@ defaults write NSGlobalDomain NSTextShowsControlCharacters -bool true;ok
 running "Setting Help Viewer windows to non-floating mode"
 defaults write com.apple.helpviewer DevMode -bool true;ok
 
+#runniong "Fixing the ancient UTF-8 bug in QuickLook (https://mths.be/bbo)"
+# Commented out, as this is known to cause problems in various Adobe apps :(
+# See https://github.com/mathiasbynens/dotfiles/issues/237
+#echo "0x08000100:0" > ~/.CFUserTextEncoding;ok
+
 running "Setting it to Reveal IP, hostname, OS, etc. when clicking clock in login window"
 sudo defaults write /Library/Preferences/com.apple.loginwindow AdminHostInfo HostName;ok
+
+# running "Disabling Notification Center and remove the menu bar icon"
+# launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist 2> /dev/null;ok
+
+running "Disabling automatic capitalization as it’s annoying when typing code"
+defaults write NSGlobalDomain NSAutomaticCapitalizationEnabled -bool false;ok
+
+running "Disabling smart dashes as they’re annoying when typing code"
+defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false;ok
+
+running "Disabling automatic period substitution as it’s annoying when typing code"
+defaults write NSGlobalDomain NSAutomaticPeriodSubstitutionEnabled -bool false;ok
+
+running "Disabling smart quotes as they’re annoying when typing code"
+defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false;ok
+
+running "Disabling auto-correct"
+defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false;ok
 
 running "Setting it to restart automatically if the computer freezes"
 sudo systemsetup -setrestartfreeze on;ok
 
 running "Disabling sleep mode"
 sudo systemsetup -setcomputersleep Off > /dev/null;ok
-
-running "Changing it to Check for software updates daily, not just once per week"
-defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1;ok
-
-#running "Disable Notification Center and remove the menu bar icon"
-#launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist > /dev/null 2>&1;ok
-
-running "Disabling smart quotes as they’re annoying when typing code"
-defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false;ok
-
-running "Disabling smart dashes as they’re annoying when typing code"
-defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false;ok

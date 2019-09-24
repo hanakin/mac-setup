@@ -41,9 +41,11 @@ defaults write com.apple.dashboard devmode -bool true;ok
 #running "Top left screen corner → Mission Control"
 #defaults write com.apple.dock wvous-tl-corner -int 2
 #defaults write com.apple.dock wvous-tl-modifier -int 0;ok
+
 #running "Top right screen corner → Desktop"
 #defaults write com.apple.dock wvous-tr-corner -int 4
 #defaults write com.apple.dock wvous-tr-modifier -int 0;ok
+
 #running "Bottom right screen corner → Start screen saver"
 #defaults write com.apple.dock wvous-br-corner -int 5
 #defaults write com.apple.dock wvous-br-modifier -int 0;ok

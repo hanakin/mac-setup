@@ -7,10 +7,6 @@ source ./scripts/lib.sh
 bot "Configureing Dock Settings"
 ###############################################################################
 
-# running "Replacing Dock"
-# sudo rm -f ~/Library/Preferences/com.apple.dock.plist
-# sudo cp ~/.dotfiles/configs/com.apple.dock.plist ~/Library/Preferences/com.apple.dock.plist;ok
-
 running "Enabling highlight hover effect for the grid view of a stack (Dock)"
 defaults write com.apple.dock mouse-over-hilite-stack -bool true;ok
 
@@ -29,6 +25,14 @@ defaults write com.apple.dock enable-spring-load-actions-on-all-items -bool true
 running "Showing indicator lights for open applications in the Dock"
 defaults write com.apple.dock show-process-indicators -bool true;ok
 
+#running "Wipe all (default) app icons from the Dock"
+# This is only really useful when setting up a new Mac, or if you don’t use
+# the Dock to launch apps.
+#defaults write com.apple.dock persistent-apps -array;ok
+
+#running "Show only open applications in the Dock"
+#defaults write com.apple.dock static-only -bool true;ok
+
 running "Disabling opening application animation from the Dock"
 defaults write com.apple.dock launchanim -bool false;ok
 
@@ -44,6 +48,10 @@ defaults write com.apple.dock autohide-time-modifier -float 0;ok
 running "Making Dock icons of hidden applications translucent"
 defaults write com.apple.dock showhidden -bool true;ok
 
+running "Don’t show recent applications in Dock"
+defaults write com.apple.dock show-recents -bool false;ok
+
+
 running "Disabling the Launchpad gesture (pinch with thumb and three fingers)"
 defaults write com.apple.dock showLaunchpadGestureEnabled -int 0;ok
 
@@ -51,4 +59,11 @@ defaults write com.apple.dock showLaunchpadGestureEnabled -int 0;ok
 # find "${HOME}/Library/Application Support/Dock" -name "*-*.db" -maxdepth 1 -delete;ok
 
 # running "Adding iOS Simulator to Launchpad"
-# sudo ln -sf "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Applications/iPhone Simulator.app" "/Applications/iOS Simulator.app";ok
+# sudo ln -sf "/Applications/Xcode.app/Contents/Developer/Applications/Simulator.app" "/Applications/Simulator.app"
+# sudo ln -sf "/Applications/Xcode.app/Contents/Developer/Applications/Simulator (Watch).app" "/Applications/Simulator (Watch).app";ok
+
+# running "Add a spacer to the left side of the Dock (where the applications are)"
+#defaults write com.apple.dock persistent-apps -array-add '{tile-data={}; tile-type="spacer-tile";}';ok
+
+# running "Add a spacer to the right side of the Dock (where the Trash is)"
+#defaults write com.apple.dock persistent-others -array-add '{tile-data={}; tile-type="spacer-tile";}';ok

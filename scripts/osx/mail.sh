@@ -27,3 +27,6 @@ defaults write com.apple.mail DisableInlineAttachmentViewing -bool true;ok
 
 running "Disabling automatic spell checking"
 defaults write com.apple.mail SpellCheckingBehavior -string "NoSpellCheckingEnabled";ok
+
+running "Disable signing emails by default"
+defaults write ~/Library/Preferences/org.gpgtools.gpgmail SignNewEmailsByDefault -bool false;ok

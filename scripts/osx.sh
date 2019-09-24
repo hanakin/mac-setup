@@ -27,6 +27,7 @@ bot "Now lets change some settings in  OSX."
 ./scripts/osx/mail.sh
 ./scripts/osx/messages.sh
 ./scripts/osx/mouse.sh
+./scripts/osx/photos.sh
 ./scripts/osx/safari.sh
 ./scripts/osx/screen.sh
 ./scripts/osx/sizeup.sh
@@ -36,6 +37,7 @@ bot "Now lets change some settings in  OSX."
 ./scripts/osx/timemachine.sh
 ./scripts/osx/trackpad.sh
 ./scripts/osx/transmission.sh
+./scripts/osx/energy.sh
 ./scripts/osx/useability.sh
 
 ###############################################################################
@@ -45,8 +47,27 @@ bot "Now lets change some settings in  OSX."
 bot "Ok just let me clean up and restart some processes."
 bot "Some of these changes will require a logout/restart to take effect so do not be alarmed."
 
-for app in "Activity Monitor" "Address Book" "Calendar" "Contacts" "cfprefsd" \
-    "Dock" "Finder" "Mail" "Messages" "Safari" "SizeUp" "SystemUIServer" \
-    "iCal" "Terminal"; do
+for app in "Activity Monitor" \
+	"Address Book" \
+	"Calendar" \
+	"cfprefsd" \
+	"Contacts" \
+	"Dock" \
+	"Finder" \
+	"Google Chrome Canary" \
+	"Google Chrome" \
+	"Mail" \
+	"Messages" \
+	"Opera" \
+	"Photos" \
+	"Safari" \
+	"SizeUp" \
+	"Spectacle" \
+	"SystemUIServer" \
+	"Terminal" \
+	"Transmission" \
+	"Tweetbot" \
+	"Twitter" \
+	"iCal"; do
     killall "${app}" > /dev/null 2>&1
 done

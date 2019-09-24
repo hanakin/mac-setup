@@ -19,16 +19,17 @@ brew upgrade --all
 ok "all homebrew packages updated..."
 
 action "installing homebrew command-line tools"
-# Install GNU core utilities (those that come with OS X are outdated).
+# Install GNU core utilities (those that come with macOS are outdated).
 # Don’t forget to add `$(brew --prefix coreutils)/libexec/gnubin` to `$PATH`.
-require_brew coreutils
-sudo ln -s /usr/local/bin/gsha256sum /usr/local/bin/sha256sum
+brew install coreutils
+ln -s "${BREW_PREFIX}/bin/gsha256sum" "${BREW_PREFIX}/bin/sha256sum"
+
 # Install some other useful utilities like `sponge`.
-require_brew moreutils
+brew install moreutils
 # Install GNU `find`, `locate`, `updatedb`, and `xargs`, `g`-prefixed.
-require_brew findutils
+brew install findutils
 # Install GNU `sed`, overwriting the built-in `sed`.
-require_brew gnu-sed --with-default-names
+brew install gnu-sed --with-default-names
 
 # Install ZSH.
 require_brew zsh
@@ -59,58 +60,74 @@ require_brew php70
 # Install more recent versions of some OS X tools.
 require_brew vim --with-override-system-vi
 
+# Install GnuPG to enable PGP-signing commits.
+brew install gnupg
+
+# Install more recent versions of some macOS tools.
+# brew install vim --with-override-system-vi
+brew install grep
+brew install openssh
+brew install screen
+brew install php
+brew install gmp
+
 # Install font tools.
 brew tap bramstein/webfonttools
-require_brew sfnt2woff
-require_brew sfnt2woff-zopfli
-require_brew woff2
+brew install sfnt2woff
+brew install sfnt2woff-zopfli
+brew install woff2
+
+# Install some CTF tools; see https://github.com/ctfs/write-ups.
+brew install aircrack-ng
+brew install bfg
+brew install binutils
+brew install binwalk
+brew install cifer
+brew install dex2jar
+brew install dns2tcp
+brew install fcrackzip
+brew install foremost
+brew install hashpump
+brew install hydra
+brew install john
+brew install knock
+brew install netpbm
+brew install nmap
+brew install pngcheck
+brew install socat
+brew install sqlmap
+brew install tcpflow
+brew install tcpreplay
+brew install tcptrace
+brew install ucspi-tcp # `tcpserver` etc.
+brew install xpdf
+brew install xz
 
 # Install other useful binaries.
-require_brew grep
-require_brew openssh
-require_brew screen
-require_brew ack
-require_brew dark-mode
-# dos2unix converts windows newlines to unix newlines
-require_brew dos2unix
-require_brew dockutil
-require_brew fortune
-require_brew gawk
-require_brew git
-require_brew git-lfs
-require_brew git-flow
-require_brew git-extras
-require_brew gnupg
-require_brew hub
-require_brew imagemagick
-require_brew imagesnap
-require_brew jq
-require_brew lua
-require_brew lynx
-require_brew p7zip
-require_brew pigz
-require_brew pv
-require_brew rename
-require_brew rhino
-require_brew speedtest_cli
-require_brew ssh-copy-id
-require_brew tig
-require_brew tree
-require_brew ttyrec
-require_brew webkit2png
-require_brew zopfli
-require_brew pkg-config libffi
-require_brew pandoc
+brew install ack
+#brew install exiv2
+brew install git
+brew install git-lfs
+brew install gs
+brew install imagemagick --with-webp
+brew install lua
+brew install lynx
+brew install p7zip
+brew install pigz
+brew install pv
+brew install rename
+brew install rlwrap
+brew install ssh-copy-id
+brew install tree
+brew install vbindiff
+brew install zopfli
 
-# Lxml and Libxslt
-require_brew libxml2
-require_brew libxslt
-brew link libxml2 --force
-brew link libxslt --force
+# Remove outdated versions from the cellar.
+brew cleanup
+
 
 bot "all tools completed just let me clean up the installs"
-git lfs install
-git lfs install --system
+brew cleanup
 
 ###############################################################################
 # Native Apps (via brew cask)                                                 #
@@ -122,29 +139,29 @@ brew tap caskroom/versions > /dev/null 2>&1
 brew tap homebrew/cask-drivers > /dev/null 2>&1
 
 # Install Development tool casks
-require_cask atom
-require_cask atom-beta
-require_cask tower2
-require_cask kaleidoscope
-require_cask mamp
-require_cask cyberduck
+# require_cask atom
+# require_cask atom-beta
+# require_cask tower2
+# require_cask kaleidoscope
+# require_cask mamp
+# require_cask cyberduck
 
 # Install downloads
-require_cask transmission
-require_cask sabnzbd
-require_cask couchpotato
+# require_cask transmission
+# require_cask sabnzbd
+# require_cask couchpotato
 
 # Install virtal machines
-require_cask parallels
+# require_cask parallels
 
 # Install communication
-require_cask skype
+# require_cask skype
 # require_cask slack
 # require_cask discord
 
 # Install browsers
-require_cask google-chrome
-require_cask firefox
+# require_cask google-chrome
+# require_cask firefox
 
 # Install video
 require_cask blu-ray-player
@@ -157,20 +174,20 @@ require_cask air-video-server-hd
 require_cask sketch
 
 # Install utilities
-require_cask 1password
-require_cask torguard
-require_cask grammarly
-require_cask dropbox
+# require_cask 1password
+# require_cask torguard
+# require_cask grammarly
+# require_cask dropbox
 require_cask osxfuse
-require_cask razer-synapse
-require_cask smcfancontrol
-require_cask sizeup
+# require_cask razer-synapse
+# require_cask smcfancontrol
+# require_cask sizeup
 require_cask gpg-suite
-require_cask iterm2
-require_cask cleanmymac
+# require_cask iterm2
+# require_cask cleanmymac
 
 # Install Game Launchers
-require_cask steam
+# require_cask steam
 
 # Install plugins
 require_cask flash-player
