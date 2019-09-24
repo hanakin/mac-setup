@@ -98,11 +98,11 @@ ok "all clean"
 
 bot "Ok Lets install and configure your Development Environment"
 
-./scripts/npm.sh
+source ./scripts/npm.sh
 
-./scripts/apm.sh
+source ./scripts/apm.sh
 
-./scripts/gem.sh
+source ./scripts/gem.sh
 
 running "Installing PHP Composer"
 
@@ -118,6 +118,6 @@ ok "Development tools and environment condifgured"
 
 bot "Now lets Configure your System"
 
-./scripts/osx.sh
+source ./scripts/osx.sh
 
 ok "Woot! All done. That was alot."

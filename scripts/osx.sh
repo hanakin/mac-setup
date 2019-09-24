@@ -10,35 +10,35 @@ sudo ln -s
 
 bot "Now lets change some settings in  OSX."
 
-./scripts/osx/activitymonitor.sh
-./scripts/osx/addressbook.sh
-./scripts/osx/appstore.sh
-./scripts/osx/bluetooth.sh
-./scripts/osx/chrome.sh
-./scripts/osx/dashboard.sh
-./scripts/osx/diskutility.sh
-./scripts/osx/dock.sh
-./scripts/osx/finder.sh
-./scripts/osx/ical.sh
-./scripts/osx/input.sh
-./scripts/osx/iterm.sh
-./scripts/osx/itunes.sh
-./scripts/osx/keyboard.sh
-./scripts/osx/mail.sh
-./scripts/osx/messages.sh
-./scripts/osx/mouse.sh
-./scripts/osx/photos.sh
-./scripts/osx/safari.sh
-./scripts/osx/screen.sh
-./scripts/osx/sizeup.sh
-./scripts/osx/spotlight.sh
-./scripts/osx/ssd.sh
-./scripts/osx/textedit.sh
-./scripts/osx/timemachine.sh
-./scripts/osx/trackpad.sh
-./scripts/osx/transmission.sh
-./scripts/osx/energy.sh
-./scripts/osx/useability.sh
+source ./scripts/osx/activitymonitor.sh
+source ./scripts/osx/addressbook.sh
+source ./scripts/osx/appstore.sh
+source ./scripts/osx/bluetooth.sh
+source ./scripts/osx/chrome.sh
+source ./scripts/osx/dashboard.sh
+source ./scripts/osx/diskutility.sh
+source ./scripts/osx/dock.sh
+source ./scripts/osx/finder.sh
+source ./scripts/osx/ical.sh
+source ./scripts/osx/input.sh
+source ./scripts/osx/iterm.sh
+source ./scripts/osx/itunes.sh
+source ./scripts/osx/keyboard.sh
+source ./scripts/osx/mail.sh
+source ./scripts/osx/messages.sh
+source ./scripts/osx/mouse.sh
+source ./scripts/osx/photos.sh
+source ./scripts/osx/safari.sh
+source ./scripts/osx/screen.sh
+source ./scripts/osx/sizeup.sh
+source ./scripts/osx/spotlight.sh
+source ./scripts/osx/ssd.sh
+source ./scripts/osx/textedit.sh
+source ./scripts/osx/timemachine.sh
+source ./scripts/osx/trackpad.sh
+source ./scripts/osx/transmission.sh
+source ./scripts/osx/energy.sh
+source ./scripts/osx/useability.sh
 
 ###############################################################################
 # Clean Up

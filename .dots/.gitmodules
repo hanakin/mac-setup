@@ -1,0 +1,39 @@
+[submodule "oh-my-zsh"]
+	path = oh-my-zsh
+	url = git://github.com/robbyrussell/oh-my-zsh.git
+[submodule "CodeRunner-sublime-theme"]
+    path = configs/Sublime Packages/Color Scheme - CodeRunner
+    url = git://github.com/hanakin/CodeRunner-sublime-theme.git
+[submodule "Sites/phpbb-css-stats"]
+	path = Sites/phpbb-css-stats
+	url = https://github.com/hanakin/phpbb-css-stats.git
+[submodule "Sites/chameleon"]
+	path = Sites/chameleon
+	url = https://github.com/hanakin/chameleon.git
+[submodule "Sites/bootstrap"]
+	path = Sites/bootstrap
+	url = https://github.com/hanakin/bootstrap.git
+[submodule "Sites/branding"]
+	path = Sites/branding
+	url = https://github.com/hanakin/branding.git
+[submodule "Sites/phpbb-website"]
+	path = Sites/phpbb-website
+	url = https://github.com/hanakin/phpbb-website.git
+[submodule "Sites/phpbb-website-private"]
+	path = Sites/phpbb-website-private
+	url = https://github.com/hanakin/phpbb-website-private.git
+[submodule "Sites/website"]
+	path = Sites/website
+	url = https://github.com/hanakin/website.git
+[submodule "Sites/area51-phpbb3"]
+	path = Sites/area51-phpbb3
+	url = https://github.com/hanakin/area51-phpbb3.git
+[submodule "Sites/phpbb"]
+	path = Sites/phpbb
+	url = https://github.com/hanakin/phpbb.git
+[submodule "Sites/phpbb3-website"]
+	path = Sites/phpbb3-website
+	url = https://github.com/hanakin/phpbb3-website.git
+[submodule "Sites/midaym"]
+	path = Sites/midaym
+	url = https://github.com/hanakin/midaym.git

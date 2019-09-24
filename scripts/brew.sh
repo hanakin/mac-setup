@@ -14,7 +14,7 @@ action "updating homebrew packages..."
 # Make sure we’re using the latest Homebrew.
 brew update
 # Upgrade any already-installed formulae.
-brew upgrade --all
+brew upgrade
 
 ok "all homebrew packages updated..."
 
@@ -29,7 +29,7 @@ brew install moreutils
 # Install GNU `find`, `locate`, `updatedb`, and `xargs`, `g`-prefixed.
 brew install findutils
 # Install GNU `sed`, overwriting the built-in `sed`.
-brew install gnu-sed --with-default-names
+brew install gnu-sed
 
 # Install ZSH.
 require_brew zsh
@@ -39,7 +39,7 @@ sudo chsh -s /bin/zsh;ok
 pushd ~ > /dev/null 2>&1
 
 # Install `wget` with IRI support.
-require_brew wget --with-iri
+require_brew wget
 
 # Install Python
 require_brew python@2
@@ -55,10 +55,10 @@ grep -q "$LINE" ~/.extra || echo "$LINE" >> ~/.extra
 require_brew node
 
 # Install PHP7
-require_brew php70
+# require_brew php70
 
 # Install more recent versions of some OS X tools.
-require_brew vim --with-override-system-vi
+require_brew vim
 
 # Install GnuPG to enable PGP-signing commits.
 brew install gnupg
@@ -109,7 +109,7 @@ brew install ack
 brew install git
 brew install git-lfs
 brew install gs
-brew install imagemagick --with-webp
+brew install imagemagick
 brew install lua
 brew install lynx
 brew install p7zip
@@ -164,14 +164,14 @@ brew tap homebrew/cask-drivers > /dev/null 2>&1
 # require_cask firefox
 
 # Install video
-require_cask blu-ray-player
-require_cask handbrake
-require_cask subler
-require_cask vlc
-require_cask air-video-server-hd
+# require_cask blu-ray-player
+# require_cask handbrake
+# require_cask subler
+# require_cask vlc
+# require_cask air-video-server-hd
 
 # Install design
-require_cask sketch
+# require_cask sketch
 
 # Install utilities
 # require_cask 1password
