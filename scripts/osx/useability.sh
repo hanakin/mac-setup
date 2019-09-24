@@ -22,19 +22,19 @@ sudo pmset -a standbydelay 86400;ok
 # running "Disabeling transparency in the menu bar and elsewhere"
 # defaults write com.apple.universalaccess reduceTransparency -bool true;ok
 
-running "Hideing the Time Machine, Volume, User, Airport icons in the menubar"
-for domain in ~/Library/Preferences/ByHost/com.apple.systemuiserver.*; do
-    defaults write "${domain}" dontAutoLoad -array \
-        "/System/Library/CoreServices/Menu Extras/TimeMachine.menu" \
-        "/System/Library/CoreServices/Menu Extras/Volume.menu" \
-        "/System/Library/CoreServices/Menu Extras/User.menu"
-done;
-defaults write com.apple.systemuiserver menuExtras -array \
-    #"/System/Library/CoreServices/Menu Extras/Bluetooth.menu" \
-    "/System/Library/CoreServices/Menu Extras/AirPort.menu"
-    #"/System/Library/CoreServices/Menu Extras/Battery.menu" \
-    #"/System/Library/CoreServices/Menu Extras/Clock.menu"
-ok
+# running "Hideing the Time Machine, Volume, User, Airport icons in the menubar"
+# for domain in ~/Library/Preferences/ByHost/com.apple.systemuiserver.*; do
+#     defaults write "${domain}" dontAutoLoad -array \
+#         "/System/Library/CoreServices/Menu Extras/TimeMachine.menu" \
+#         "/System/Library/CoreServices/Menu Extras/Volume.menu" \
+#         "/System/Library/CoreServices/Menu Extras/User.menu"
+# done;
+# defaults write com.apple.systemuiserver menuExtras -array \
+#     #"/System/Library/CoreServices/Menu Extras/Bluetooth.menu" \
+#     "/System/Library/CoreServices/Menu Extras/AirPort.menu"
+#     #"/System/Library/CoreServices/Menu Extras/Battery.menu" \
+#     #"/System/Library/CoreServices/Menu Extras/Clock.menu"
+# ok
 
 running "Setting printer app to Automatically quit once the print jobs complete"
 defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true;ok
@@ -69,8 +69,8 @@ defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true;ok
 running "Disabling the “Are you sure you want to open this application?” dialog"
 defaults write com.apple.LaunchServices LSQuarantine -bool false;ok
 
-running "Removeing duplicates in the “Open With” menu (also see 'lscleanup' alias)"
-/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user;ok
+# running "Removeing duplicates in the “Open With” menu (also see 'lscleanup' alias)"
+# /System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user;ok
 
 running "Displaying ASCII control characters using caret notation in standard text views"
 # Try e.g. `cd /tmp; unidecode "\x{0000}" > cc.txt; open -e cc.txt`

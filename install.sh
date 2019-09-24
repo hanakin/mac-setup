@@ -75,11 +75,11 @@ ok "I have everything I need."
 # Symlinks
 ###############################################################################
 
-bot "I need to tell your system where all your hidden files are and pass it all the info we colected"
-
-./scripts/link.sh
-
-ok "Now lets ensure some required tools I need to help set everything up are installed."
+# bot "I need to tell your system where all your hidden files are and pass it all the info we colected"
+#
+# ./scripts/link.sh
+#
+# ok "Now lets ensure some required tools I need to help set everything up are installed."
 
 ###############################################################################
 # Homebrew Install
@@ -87,7 +87,7 @@ ok "Now lets ensure some required tools I need to help set everything up are ins
 
 bot "Lets start by installing some global tools and apps"
 
-./scripts/brew.sh
+source ./scripts/brew.sh
 
 ok "all clean"
 
