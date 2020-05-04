@@ -38,8 +38,10 @@ require_apm language-jade
 require_apm language-markdown
 require_apm language-sphinx
 require_apm language-twig
+require_apm language-twig-patch
 require_apm language-vue
 require_apm linter
+require_apm linter-htmlhint
 require_apm linter-jsonlint
 require_apm linter-php
 require_apm linter-stylelint
