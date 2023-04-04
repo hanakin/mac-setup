@@ -45,7 +45,6 @@ defaults write com.apple.finder _FXSortFoldersFirst -bool true;ok
 running "Displaying full POSIX path as Finder window title"
 defaults write com.apple.finder _FXShowPosixPathInTitle -bool true;ok
 
-
 running "Setting current folder to default search loaction"
 defaults write com.apple.finder FXDefaultSearchScope -string "SCcf";ok
 
@@ -105,8 +104,8 @@ defaults write com.apple.finder WarnOnEmptyTrash -bool false;ok
 #running "Empty Trash securely by default"
 #defaults write com.apple.finder EmptyTrashSecurely -bool true;ok
 
-running "Enabling AirDrop over Ethernet and on unsupported Macs running Lion"
-defaults write com.apple.NetworkBrowser BrowseAllInterfaces -bool true;ok
+# running "Enabling AirDrop over Ethernet and on unsupported Macs running Lion"
+# defaults write com.apple.NetworkBrowser BrowseAllInterfaces -bool true;ok
 
 running "Showing the ~/Library folder"
 chflags nohidden ~/Library;ok

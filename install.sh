@@ -59,9 +59,14 @@ ok "Now lets prepare your System for all the work we need to do"
 bot "First lets check and see if there are any updates before we begin, this may take some time"
 
 # Install all available updates
-# sudo softwareupdate -ia --verbose
+sudo softwareupdate -ia --verbose
 # Install only recommended available updates
 #sudo softwareupdate -ir --verbose
+
+ok "Lets grab the current version of Rosetta to ensure all apss work even if they are not native to ARM based systems"
+
+# Install Rosetta 2
+/usr/sbin/softwareupdate --install-rosetta --agree-to-license
 
 ok "Now I will need Xcode command Line Tools to continue...Let me grab them this may take awhile"
 
@@ -75,11 +80,11 @@ ok "I have everything I need."
 # Symlinks
 ###############################################################################
 
-# bot "I need to tell your system where all your hidden files are and pass it all the info we colected"
-#
-# ./scripts/link.sh
-#
-# ok "Now lets ensure some required tools I need to help set everything up are installed."
+bot "I need to tell your system where all your hidden files are and pass it all the info we colected"
+
+./scripts/link.sh
+
+ok "Now lets ensure some required tools I need to help set everything up are installed."
 
 ###############################################################################
 # Homebrew Install
@@ -91,7 +96,6 @@ source ./scripts/brew.sh
 
 ok "all clean"
 
-
 ###############################################################################
 # Development Environment Setup
 ###############################################################################
@@ -99,8 +103,6 @@ ok "all clean"
 bot "Ok Lets install and configure your Development Environment"
 
 source ./scripts/npm.sh
-
-source ./scripts/apm.sh
 
 source ./scripts/gem.sh
 

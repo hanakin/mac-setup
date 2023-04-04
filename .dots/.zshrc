@@ -21,7 +21,7 @@ export CASE_SENSITIVE="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.dotfiles/oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git brew npm osx compleat dirpersist git-flow gitfast sublime sudo composer)
+plugins=(git brew npm asdf osx compleat dirpersist git-flow gitfast sublime sudo composer)
 
 source $ZSH/oh-my-zsh.sh
 

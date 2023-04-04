@@ -83,11 +83,21 @@ function require_brew() {
     ok
 }
 
+function require_asdf() {
+    running "asdf $1 $2"
+    if ! $2; then
+        $2 == 'latest'
+    fi
+    asdf plugin-add $1
+    asdf install $1 $2
+    asdf global $1 $2
+}
+
 function require_cask() {
     running "brew cask $1"
     # brew cask ls $1 > /dev/null 2>&1 | true
     # if [[ ${PIPESTATUS[0]} != 0 ]]; then
-        brew cask install --appdir="/Applications" $1
+        brew install --cask --appdir="/Applications" $1
         if [[ $? != 0 ]]; then
             error "failed to install $1! aborting..."
             # exit -1
