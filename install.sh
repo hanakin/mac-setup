@@ -63,7 +63,7 @@ bot "First lets check and see if there are any updates before we begin, this may
 
 running "Updating computer operating system..."
 # Install all available updates
-sudo softwareupdate -ia --verbose
+sudo softwareupdate -ia --verbose;ok
 # Install only recommended available updates
 #sudo softwareupdate -ir --verbose
 ok "computer uptodate!"
@@ -72,14 +72,14 @@ bot "Lets grab the current version of Rosetta to ensure all apss work even if th
 
 running "Installing Rosetta2..."
 # Install Rosetta 2
-/usr/sbin/softwareupdate --install-rosetta --agree-to-license
+/usr/sbin/softwareupdate --install-rosetta --agree-to-license;ok
 ok "rosetta2 installed!"
 
 bot "Now I will need Xcode command Line Tools to continue...Let me grab them this may also take awhile possibly sevearl hours"
 
 running "Installing Xcode Command Line Tools..."
 # Install Xcode command line tools
-xcode-select --install
+xcode-select --install;ok
 ok "xcode command line tools installed!"
 
 bot "Alright I have everything I need."
@@ -91,8 +91,7 @@ bot "Alright I have everything I need."
 
 bot "We need to tell your system where all your hidden files are and pass it all the info we have colected"
 
-source ./scripts/link.sh
-ok "all dot_files symlinked"
+source ./scripts/link.sh;ok "all dot_files symlinked"
 
 bot "Now lets ensure some required tools I need to help set everything up are installed."
 
@@ -102,9 +101,7 @@ bot "Now lets ensure some required tools I need to help set everything up are in
 
 bot "Lets start by installing some global tools and apps"
 
-source ./scripts/brew.sh
-
-ok "all clean"
+source ./scripts/brew.sh;ok "all clean"
 
 ###############################################################################
 # Development Environment Setup
@@ -112,16 +109,16 @@ ok "all clean"
 
 bot "Ok Lets install and configure your Development Environment"
 
-source ./scripts/npm.sh
+source ./scripts/npm.sh;ok
 
-source ./scripts/gem.sh
+source ./scripts/gem.sh;ok
 
 bot "I am also going to install PHP Composer"
 
 running "Installing PHP Composer"
 
 curl -sS https://getcomposer.org/installer | php;ok
-sudo mv composer.phar /usr/local/bin/composer
+sudo mv composer.phar /usr/local/bin/composer;ok
 
 ok "composer installed!"
 
@@ -133,7 +130,6 @@ bot "Development tools and environment condifgured"
 
 bot "Whew no lets modify the OS to make more sense..."
 
-source ./scripts/osx.sh
-ok "all done!"
+source ./scripts/osx.sh;ok "all done!"
 
-Bot "Woot! All done. That was alot. You system should be all good as new"
+bot "Woot! All done. That was alot. You system should be all good as new"

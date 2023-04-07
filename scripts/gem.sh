@@ -17,12 +17,11 @@ fi
 bot "Looks like we are all set lets get those gems installed."
 running "Installing gems"
 
-LINE='eval "$(rbenv init -)"'
-grep -q "$LINE" ~/.extra || echo "$LINE" >> ~/.extra
+LINE='eval "$(rbenv init -)"';ok
+grep -q "$LINE" ~/.extra || echo "$LINE" >> ~/.extra;ok
 
 require_gem git-up
 require_gem sass
 require_gem compass
 require_gem burbon
-
 ok "all gems instlled!"
