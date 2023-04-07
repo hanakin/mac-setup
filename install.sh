@@ -95,11 +95,11 @@ bot "Woot! All done. That was alot. You system should be all good now"
 # Symlinks
 ###############################################################################
 
-bot "We need to tell your system where all your hidden files are and pass it all the info we have colected. But first lets make a backup of everything"
+#bot "We need to tell your system where all your hidden files are and pass it all the info we have colected. But first lets make a backup of everything"
 
-source ./scripts/link.sh;ok "all dot_files symlinked"
+#source ./scripts/link.sh;ok "all dot_files symlinked"
 
-bot "Now lets ensure some required tools I need to help set everything up are installed."
+#bot "Now lets ensure some required tools I need to help set everything up are installed."
 
 ###############################################################################
 # Homebrew Install
