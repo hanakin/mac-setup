@@ -19,3 +19,5 @@ ok "testing ok funciton should be green"
 warn "testing warn funciton should be yellow"
 
 error "testing error funciton should be red"
+
+source ./scripts/osx.sh

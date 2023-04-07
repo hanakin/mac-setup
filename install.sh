@@ -12,47 +12,43 @@ bot "Hello. I am Lucy, I will be helping you with setting up your system."
 # Ask for the administrator password upfront
 bot "First I will need you to enter your systems password to be able to install and change some things:"
 sudo -v
-
 # Keep-alive: update existing `sudo` time stamp until `.osx` has finished
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 # make a backup directory for overwritten dotfiles
 if [[ ! -e ~/.dotfiles_backup ]]; then
+    bot "Since this is the firstime I am setting up a computer for you, lets get the introductions out of the way."
+
+    ask "What is your first name? " firstname
+
+    bot "Hi $firstname, Its nice to meet you."
+    bot "Now that we are on a first name basis lets get a little more personal"
+
     mkdir ~/.dotfiles_backup
 fi
-
-bot "Since this is the firstime I am setting up a computer for you, lets get the introductions out of the way."
-
-ask "What is your first name? " firstname
-ask "and how about your last name? " lastname
-
-fullname="$firstname $lastname"
-
-bot "Hi $firstname, Its nice to meet you."
-bot "Now that we are on a first name basis lets get a little more personal"
-
-ask "What is your email? " email
-ask "What is your github.com username? " githubuser
-ask "What would you like to call this computer? " netname
-
 
 ###############################################################################
 # Configure accounts
 ###############################################################################
+if [[ ! -e ~/.ssh/id_rsa ]]; then
+    bot "Do not be alarmed I am not trying to steal your idenity. I need to pass all the info we colected to your computer to set things up."
 
-bot "Do not be alarmed I am not trying to steal your idenity. I need to pass all the info we colected to your computer to set things up."
+    ask "What would you like to call this computer? " netname
 
-running "Setting computer name (as done via System Preferences → Sharing)..."
-sudo scutil --set ComputerName $netname
-sudo scutil --set HostName $netname
-sudo scutil --set LocalHostName $netname
-sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string $netname;ok
+    running "Setting computer name (as done via System Preferences → Sharing)..."
+    sudo scutil --set ComputerName $netname
+    sudo scutil --set HostName $netname
+    sudo scutil --set LocalHostName $netname
+    sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string $netname;ok
 
-ok "computer name set!"
+    ok "computer name set!"
 
-running "Making SSH key..."
-make_ssh
-ok "SSH key made!"
+    ask "What is your email? " email
+
+    running "Making SSH key..."
+    make_ssh
+    ok "SSH key made!"
+fi
 
 bot "Now lets prepare your System for all the work we need to do"
 
@@ -84,12 +80,22 @@ ok "xcode command line tools installed!"
 
 bot "Alright I have everything I need."
 
+###############################################################################
+# OSX Setup
+###############################################################################
+
+bot "Lets modify the OS to make more sense..."
+
+source ./scripts/osx.sh;ok "all done!"
+
+bot "Woot! All done. That was alot. You system should be all good now"
+
 
 ###############################################################################
 # Symlinks
 ###############################################################################
 
-bot "We need to tell your system where all your hidden files are and pass it all the info we have colected"
+bot "We need to tell your system where all your hidden files are and pass it all the info we have colected. But first lets make a backup of everything"
 
 source ./scripts/link.sh;ok "all dot_files symlinked"
 
@@ -122,14 +128,4 @@ sudo mv composer.phar /usr/local/bin/composer;ok
 
 ok "composer installed!"
 
-bot "Development tools and environment condifgured"
-
-###############################################################################
-# OSX Setup
-###############################################################################
-
-bot "Whew no lets modify the OS to make more sense..."
-
-source ./scripts/osx.sh;ok "all done!"
-
-bot "Woot! All done. That was alot. You system should be all good as new"
+bot "Development tools and environment condifgured. You system should be all good to go now."
