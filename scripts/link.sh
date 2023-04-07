@@ -1,9 +1,6 @@
-#!/usr/bin/env bash
+#!/bin/zsh
 
-
-source ./scripts/lib.sh
-
-action "symlinking project dotfiles..."
+running "symlinking project dotfiles...we do not need to rereference if you see this"
 
 cd ~
 
@@ -12,8 +9,8 @@ symlinkifne .crontab
 symlinkifne .curlc
 symlinkifne .editorconfig
 symlinkifne .gemrc
-symlinkifne .gitconfig
 symlinkifne .gitattributes
+symlinkifne .gitconfig
 symlinkifne .gitignore
 symlinkifne .profile
 symlinkifne .rvmrc
@@ -21,8 +18,6 @@ symlinkifne .screenrc
 symlinkifne .shellfn
 symlinkifne .shellpaths
 symlinkifne .shellvars
-symlinkifne .vim
-symlinkifne .vimrc
 symlinkifne .wgetrc
 symlinkifne .zlogout
 symlinkifne .zprofile

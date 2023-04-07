@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/zsh
 
 # include my library helpers for colorized echo and require_brew, etc
 source ./scripts/lib.sh
@@ -10,7 +10,7 @@ source ./scripts/lib.sh
 bot "Hello. I am Lucy, I will be helping you with setting up your system."
 
 # Ask for the administrator password upfront
-bot "First I will need you to enter your systems password to be able to install some things:"
+bot "First I will need you to enter your systems password to be able to install and change some things:"
 sudo -v
 
 # Keep-alive: update existing `sudo` time stamp until `.osx` has finished
@@ -40,51 +40,61 @@ ask "What would you like to call this computer? " netname
 # Configure accounts
 ###############################################################################
 
-bot "I need to pass all the info we colected to your computer"
+bot "Do not be alarmed I am not trying to steal your idenity. I need to pass all the info we colected to your computer to set things up."
 
-running "Setting computer name (as done via System Preferences → Sharing)"
+running "Setting computer name (as done via System Preferences → Sharing)..."
 sudo scutil --set ComputerName $netname
 sudo scutil --set HostName $netname
 sudo scutil --set LocalHostName $netname
 sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string $netname;ok
 
+ok "computer name set!"
+
+running "Making SSH key..."
 make_ssh
+ok "SSH key made!"
 
-ok "Now lets prepare your System for all the work we need to do"
-
+bot "Now lets prepare your System for all the work we need to do"
 
 ###############################################################################
 # System Prep
 ###############################################################################
 bot "First lets check and see if there are any updates before we begin, this may take some time"
 
+running "Updating computer operating system..."
 # Install all available updates
 sudo softwareupdate -ia --verbose
 # Install only recommended available updates
 #sudo softwareupdate -ir --verbose
+ok "computer uptodate!"
 
-ok "Lets grab the current version of Rosetta to ensure all apss work even if they are not native to ARM based systems"
+bot "Lets grab the current version of Rosetta to ensure all apss work even if they are not native to ARM based systems"
 
+running "Installing Rosetta2..."
 # Install Rosetta 2
 /usr/sbin/softwareupdate --install-rosetta --agree-to-license
+ok "rosetta2 installed!"
 
-ok "Now I will need Xcode command Line Tools to continue...Let me grab them this may take awhile"
+bot "Now I will need Xcode command Line Tools to continue...Let me grab them this may also take awhile possibly sevearl hours"
 
+running "Installing Xcode Command Line Tools..."
 # Install Xcode command line tools
 xcode-select --install
+ok "xcode command line tools installed!"
 
-ok "I have everything I need."
+bot "Alright I have everything I need."
 
 
 ###############################################################################
 # Symlinks
 ###############################################################################
 
-bot "I need to tell your system where all your hidden files are and pass it all the info we colected"
+bot "We need to tell your system where all your hidden files are and pass it all the info we have colected"
 
-./scripts/link.sh
+source ./scripts/link.sh
+ok "all dot_files symlinked"
 
-ok "Now lets ensure some required tools I need to help set everything up are installed."
+bot "Now lets ensure some required tools I need to help set everything up are installed."
 
 ###############################################################################
 # Homebrew Install
@@ -106,20 +116,24 @@ source ./scripts/npm.sh
 
 source ./scripts/gem.sh
 
+bot "I am also going to install PHP Composer"
+
 running "Installing PHP Composer"
 
 curl -sS https://getcomposer.org/installer | php;ok
 sudo mv composer.phar /usr/local/bin/composer
 
-ok "Development tools and environment condifgured"
+ok "composer installed!"
 
+bot "Development tools and environment condifgured"
 
 ###############################################################################
 # OSX Setup
 ###############################################################################
 
-bot "Now lets Configure your System"
+bot "Whew no lets modify the OS to make more sense..."
 
 source ./scripts/osx.sh
+ok "all done!"
 
-ok "Woot! All done. That was alot."
+Bot "Woot! All done. That was alot. You system should be all good as new"

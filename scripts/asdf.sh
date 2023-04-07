@@ -1,19 +1,17 @@
-#!/usr/bin/env bash
+#!/bin/zsh
 
-
-source ./scripts/lib.sh
-
-bot "Lets install our codeing languages using asdf"
-
-running "checking node is installed"
+bot "Lets make sure asdf is not already installed"
 # Install if we don't have it
 if test ! $(asdf current); then
-  running "Installing node..."
+  bot "Looks like its not, I will do so now"
+  running "Installing asdf..."
   require_brew asdf
+  ok "asdf installed"
 fi
 
-running "Adding asdf plugins"
+bot "Lets install all our coding languages using asdf."
 
+running "Adding asdf plugins..."
 asdf plugin-add nodejs
 asdf plugin-add python
 asdf plugin-add mysql
@@ -24,10 +22,9 @@ asdf plugin-add rust
 asdf plugin-add sqlite
 asdf plugin-add lua
 asdf plugin-add imagemagick
-
 ok "all plugins added!"
 
-running "Installing asdf plugins"
+running "Installing asdf plugins..."
 
 asdf install nodejs latest
 asdf install python 3.10
@@ -42,7 +39,7 @@ asdf install imagemagick
 
 ok "all plugins installed!"
 
-running "Configuring asdf plugins"
+running "Configuring asdf plugins..."
 
 asdf global nodejs latest
 asdf global python 3.10

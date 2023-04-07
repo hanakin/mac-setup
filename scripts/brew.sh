@@ -1,29 +1,35 @@
-#!/usr/bin/env bash
+#!/bin/zsh
 
-
-source ./scripts/lib.sh
-
-running "checking that homebrew is installed"
+bot "Let me check that homebrew is installed"
 # Install if we don't have it
 if test ! $(which brew); then
-  running "Installing homebrew..."
+  bot "Its not I will install it now"
+  running "Installing Homebrew..."
   ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
-action "updating homebrew packages..."
+Bot "Its already installed lets update its available packages list..."
 # Make sure we’re using the latest Homebrew.
+running "Updating Homebrew..."
 brew update
 # Upgrade any already-installed formulae.
+running "Upgrading Homebrew..."
 brew upgrade
 
 ok "all homebrew packages updated..."
 
-action "installing homebrew command-line tools"
+bot "Homebew needs some command lint tools let me get those for you"
+running "Installing homebrew command-line tools..."
 # Install GNU core utilities (those that come with macOS are outdated).
 # Don’t forget to add `$(brew --prefix coreutils)/libexec/gnubin` to `$PATH`.
 brew install coreutils
 ln -s "${BREW_PREFIX}/bin/gsha256sum" "${BREW_PREFIX}/bin/sha256sum"
 
+ok "all homebrew command line tools installed..."
+
+bot "Lets get a better terminal this one is kind of ugly and lacks all the bells and whistles."
+
+running "Setting up iTerm2 with ohmyzsh..."
 brew install --cask iterm2
 
 # Install ZSH.
@@ -33,22 +39,23 @@ sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.
 sudo chsh -s /bin/zsh;ok
 pushd ~ > /dev/null 2>&1
 
+ok "new terminal aquired..."
+
+bot "Lets make version managment of the command line a thing of the past."
 # Installing multiple language runtimes separately is now officially cringe. With asdf, you can manage multiple versions of Python, Node.js, Java, Go, and so on, with the same set of commands. As a cherry on top, there’s a plugin for asdf on oh-my-zsh to handle pathing and command autocompletion!
 
-ok "Lets make version managment of the command line a thing of the past."
+source ./asdf.sh
 
-brew install asdf
+bot "Ok Lets continue to install some brews"
 
-source ./scripts/asdf.sh
-
-ok "Now continuing to install brews."
-
+running "Installing brews..."
 # Install `wget` with IRI support.
 require_brew wget
 
 # Install GnuPG to enable PGP-signing commits.
 brew install gnupg
 
+running "Installing brews for high level tools..."
 # Install more recent versions of some macOS tools.
 # brew install vim --with-override-system-vi
 brew install grep
@@ -56,6 +63,7 @@ brew install openssh
 brew install screen
 brew install gmp
 
+running "Installing brews for fonts..."
 # Install font tools.
 brew tap bramstein/webfonttools
 brew install sfnt2woff
@@ -88,6 +96,7 @@ brew install woff2
 # brew install xpdf
 # brew install xz
 
+running "Installing brews for working with binaries..."
 # Install other useful binaries.
 # brew install ack
 #brew install exiv2
@@ -106,8 +115,9 @@ brew install git-lfs
 # brew install zopfli
 
 # Remove outdated versions from the cellar.
+ok "all tools completed!"
 
-bot "all tools completed just let me clean up the installs"
+bot "Let me just clean up after all that mess"
 brew cleanup
 
 ###############################################################################
@@ -115,10 +125,11 @@ brew cleanup
 ###############################################################################
 bot "Now lets install your commonly used apps"
 
-action "Installing Communly used apps..."
+running "Installing Communly used apps..."
 brew tap caskroom/versions > /dev/null 2>&1
 brew tap homebrew/cask-drivers > /dev/null 2>&1
 
+running "Installing Dev Apps..."
 # Install Development tool casks
 require_cask visual-studio-code
 require_cask jetbrains-toolbox
@@ -129,29 +140,35 @@ require_cask cyberduck
 # Install downloads
 # require_cask transmission
 
+running "Installing VM Apps..."
 # Install virtal machines
 require_cask parallels
 
+running "Installing Communication Apps..."
 # Install communication
 require_cask slack
 require_cask discord
 
+running "Installing Browser Apps..."
 # Install browsers
 require_cask google-chrome
 require_cask microsoft-edge
 require_cask firefox
 
+running "Installing Video Apps..."
 # Install video
 require_cask handbrake
 require_cask subler
 require_cask vlc
 require_cask plex
 
+running "Installing design Apps..."
 # Install design
 require_cask sketch
 require_cask figma
 require_cask adobe-creative-cloud
 
+running "Installing Utility Apps..."
 # Install utilities
 require_cask 1password
 require_cask nordvpn
@@ -165,10 +182,8 @@ require_cask smcfancontrol
 require_cask gpg-suite
 require_cask cleanmymac
 
-
+running "Installing common quicklook plugins..."
 # Install plugins
-
-
 # Install developer friendly quick look plugins; see https://github.com/sindresorhus/quick-look-plugins
 require_cask qlimagesize
 require_cask webpquicklook
@@ -181,15 +196,16 @@ require_cask quicklook-csv
 require_cask quicklook-json
 require_cask suspicious-package
 
+ok "all apps instlled!"
+
+bot "The following apps can not be installed using hombrew and will need to be manually installed if needed. macpar-deluxe, macfusion, entropy, magnet"
 ###### Manual Installs #######
 # macpar-deluxe
 # macfusion
 # entropy
 # magnet
 
-ok "all apps instlled!"
-
 # Remove outdated versions from the cellar.
-bot "Alright, let me just clean up somethings..."
+bot "Alright, let me just clean after myself again..."
 # Remove outdated versions from the cellar
 brew cleanup > /dev/null 2>&1

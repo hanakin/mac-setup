@@ -1,21 +1,22 @@
-#!/usr/bin/env bash
+#!/bin/zsh
 
+bot "Lets install some nessecary node packages now"
 
-source ./scripts/lib.sh
+bot "Let me see if node is installed properly first"
 
-bot "Lets install some nessecary node packages"
-
-running "checking node is installed"
 # Install if we don't have it
 if test ! $(which node); then
+  bot "It does not appear to be installed properly let me fix that"
   running "Installing node..."
   asdf plugin-add nodejs
   asdf install nodejs latest
   asdf global nodejs latest
+  ok "node installed!"
 fi
 
-running "Installing node packages"
+bot "Looks like we are all set lets get those packages installed."
 
+running "Installing node packages..."
 require_npm gulp
 require_npm sass
 require_npm stylelint

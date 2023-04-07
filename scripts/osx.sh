@@ -1,7 +1,4 @@
-#!/usr/bin/env bash
-
-
-source ./scripts/lib.sh
+#!/bin/zsh
 
 bot "First lets setup the downloads folder to sync with iCloud."
 
@@ -9,7 +6,6 @@ sudo rm -r ~/Downloads;ok
 sudo ln -s
 
 bot "Now lets change some settings in  OSX."
-
 source ./scripts/osx/activitymonitor.sh
 source ./scripts/osx/addressbook.sh
 source ./scripts/osx/appstore.sh
@@ -39,6 +35,8 @@ source ./scripts/osx/trackpad.sh
 # source ./scripts/osx/transmission.sh
 source ./scripts/osx/energy.sh
 source ./scripts/osx/useability.sh
+
+ok "osx settings changed"
 
 ###############################################################################
 # Clean Up

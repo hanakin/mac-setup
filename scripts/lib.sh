@@ -1,41 +1,41 @@
-#!/usr/bin/env bash
+#!/bin/zsh
 
 # Colors
-ESC_SEQ="\x1b["
-RESET=$ESC_SEQ"39;49;00m"
-L_RED=$ESC_SEQ"31;01m"
-L_GREEN=$ESC_SEQ"32;01m"
-L_YELLOW=$ESC_SEQ"33;01m"
-L_BLUE=$ESC_SEQ"34;01m"
-L_MAGENTA=$ESC_SEQ"35;01m"
-L_CYAN=$ESC_SEQ"36;01m"
+ESC_SEQ="\e["
+RESET=$ESC_SEQ"0m"
+L_RED=$ESC_SEQ"1;31m"
+L_GREEN=$ESC_SEQ"3;32m"
+L_YELLOW=$ESC_SEQ"1;33m"
+L_BLUE=$ESC_SEQ"1;34m"
+L_MAGENTA=$ESC_SEQ"1;35m"
+L_CYAN=$ESC_SEQ"1;36m"
 
 function ask() {
-    read -r -p "$(echo -e $L_MAGENTA  ⇒  $RESET$L_CYAN"$1 "$RESET)" $2
+    read "?$(echo -e $L_MAGENTA ⇒  $RESET$L_CYAN"$1 "$RESET)" $2
 }
 
 function ok() {
-    echo -e "$L_GREEN[ok]$RESET "$1
+    echo -e " $L_GREEN(ok)$RESET "$L_BLUE$1$RESET
 }
 
 function bot() {
-    echo -e "\n$L_BLUE\[._.]/$RESET - "$1
+    echo -e "\n$L_BLUE\[._.]/$RESET - "$L_YELLOW $1 $RESET
 }
 
 function running() {
-    echo -en "$L_CYAN  ⇒  $RESET"$1": "
+    echo -en "$L_CYAN  ⇒  $RESET"$L_MAGENTA$1": "$RESET
 }
 
 function action() {
-    echo -e "\n$L_MAGENTA[action]:$RESET\n $L_MAGENTA ⇒ $RESET $1..."
+    echo -e "\n$L_MAGENTA(action):$RESET\n $L_MAGENTA ⇒ $RESET $1..."
 }
 
 function warn() {
-    echo -e "$L_YELLOW[warning]$RESET "$1
+    echo -e "$L_YELLOW(warning)$RESET "$1
 }
 
 function error() {
-    echo -e "$L_RED[error]$RESET "$1
+    echo -e "$L_RED(error)$RESET "$1
 }
 
 function make_ssh {
@@ -122,12 +122,4 @@ function require_npm() {
         npm install -g $1
     fi
     ok
-}
-
-function require_apm() {
-    running "atom $1"
-    echo $npmlist | grep $1@ > /dev/null
-    if [[ $? != 0 ]]; then
-        apm install $1
-    fi
 }
